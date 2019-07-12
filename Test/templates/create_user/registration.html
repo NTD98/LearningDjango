@@ -1,0 +1,18 @@
+{% extends 'create_user/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+    <div class="jumpotron"> 
+    {% if registered %}
+    <h1>Thank you for registering!</h1>
+    {% else %}
+    <h1>Please fill out this form</h1>
+    <form enctype="multipart/form-data" method="POST">
+        {{ user_form.as_p }}
+        {{ userinfo_form.as_p }}
+        {% csrf_token %}
+        <input class="btn btn-primary" value="Register" type="submit">
+    </form>
+    {% endif %}
+    </div>
+{% endblock %}
